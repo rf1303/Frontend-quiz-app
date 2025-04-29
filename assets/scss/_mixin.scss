@@ -1,0 +1,48 @@
+@use './variables' as *;
+
+@mixin flexBox( $direction : row , $jc : start, $ai : start) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $jc;
+  align-items: $ai;
+}  
+
+@mixin tgSize($size : 1.6rem, $weight : 300 ) {
+  font-family: rubik;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin bgColorIcon($background) {
+  width: 2.5rem;
+  height: 2.5rem;
+  align-content: center;
+  background-color: $background;
+  border-radius: .3rem;
+}
+
+@mixin iconItem {
+  width: 1.786rem;
+  height: 1.786rem;
+  margin-inline: auto;
+}
+
+@mixin buttonItem {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 2rem;
+  // justify-content: flex-start;
+  align-items: center;   
+  gap: 1rem;
+  width: 100%;
+  background-color: $blue-850-color;
+  border-radius: .75rem;
+  padding: 1rem; 
+  // display: flex;
+  // justify-content: flex-start;
+  // align-items: center;
+  // gap: 1rem;
+  // width: 100%;
+  // background-color: $blue-850-color;
+  // border-radius: .75rem;
+  // padding: 1rem; 
+} 

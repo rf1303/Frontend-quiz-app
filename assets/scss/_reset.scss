@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+   /*  BORDES DE TODO */
+/*     outline: 2px solid lime;   */
+   /* #### FONDO SATURADO #### */
+    /* background: hsl(0, 100%, 50% / .1); */
+/*  background: hsl(0, 100%, calc(50% / 10)); */
+/**/
+/* background: rgba(255, 0, 0, 0.1); // Rojo con 10% de opacidad */
+/* background: hsl(0, 100%, 5%);  // 50% / 10 = 5% */
+// input[type=number]::-webkit-inner-spin-button {
+//   opacity: 1;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}			
+
+ul, ol{
+    list-style: none;
+}
+
+a{
+    display:block;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+p a{
+    display: inline;
+}
+
+img, video, iframe, picture, figure{
+    display:block;
+    max-width: 100%;
+}
+
+form, input, select, textarea, button, label{
+    display:block;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+}
