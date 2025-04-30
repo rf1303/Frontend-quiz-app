@@ -160,8 +160,8 @@ body {
 /* ###### START ######  QUIZ QUESTIONS START  ############# */
 
 .wrappers__questions {
-  display: none;   
-  /* display: grid;  */
+  /* display: none;    */
+  display: grid;  
   gap: $space-500; //40px
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -202,7 +202,7 @@ body {
 
 .answers__item {
   @include buttonItem; 
-  border: 3px solid transparent;
+  outline: 3px solid red;
 }
 
 .answers__radio {
@@ -240,8 +240,8 @@ body {
 /* ###### END ######  QUIZ QUESTIONS START  ############# */
 
 .wrappers__completed {
-  /* display: none; */
-  display: grid; 
+  display: none; 
+  /* display: grid;  */
   gap: $space-500;
   padding: $space-400 $space-300 0 $space-300;
 }

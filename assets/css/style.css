@@ -256,8 +256,8 @@ body {
 /* ###### END ######  QUIZ MENU START  ############# */
 /* ###### START ######  QUIZ QUESTIONS START  ############# */
 .wrappers__questions {
-  display: none;
-  /* display: grid;  */
+  /* display: none;    */
+  display: grid;
   gap: 2.5rem;
   padding: 2rem 1.5rem 0 1.5rem;
 }
@@ -307,7 +307,7 @@ body {
   background-color: #3b4d66;
   border-radius: 0.75rem;
   padding: 1rem;
-  border: 3px solid transparent;
+  outline: 3px solid red;
 }
 
 .answers__radio {
@@ -362,8 +362,8 @@ body {
 
 /* ###### END ######  QUIZ QUESTIONS START  ############# */
 .wrappers__completed {
-  /* display: none; */
-  display: grid;
+  display: none;
+  /* display: grid;  */
   gap: 2.5rem;
   padding: 2rem 1.5rem 0 1.5rem;
 }
