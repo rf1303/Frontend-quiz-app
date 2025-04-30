@@ -37,12 +37,12 @@ body {
 }
 
 .access__image {
-  @include bgColorIcon($purple-100-color);
+  @include bgColorIcon($space-500, $purple-100-color);
 }
 
 .item__images,
 .access__img {
-  @include iconItem;
+  @include iconItem (1.786rem);
 }
 
 .access__themes {
@@ -62,7 +62,6 @@ body {
   width: $space-400; //32px
   height: $space-275; //20px
 }
-
 
 .theme__checkbox {
   position: absolute;
@@ -146,24 +145,29 @@ body {
 }
 
 .item__images--html {
-  @include bgColorIcon($orange-50-color);
+  @include bgColorIcon($space-500, $orange-50-color);
 }
 .item__images--css {
-  @include bgColorIcon($green-100-color);
+  @include bgColorIcon($space-500, $green-100-color);
 }
 .item__images--js {
-  @include bgColorIcon($blue-50-color);
+  @include bgColorIcon($space-500, $blue-50-color);
 }
 .item__images--access {
-  @include bgColorIcon($purple-100-color);
+  @include bgColorIcon($space-500, $purple-100-color);
 }
 
 
 .wrappers__questions {
-  display: none; 
-  /* display: grid;  */
+  /* display: none;  */
+  display: grid;  
   gap: $space-500; //40px
   padding: $space-400 $space-300 0 $space-300;
+}
+
+.questions__question {
+  display: grid;
+  gap: 1rem;
 }
 
 .question__title {
@@ -206,7 +210,7 @@ body {
 }
 
 .item__radio {
-  @include bgColorIcon($grey-50-color);
+  @include bgColorIcon($space-500, $grey-50-color);
   text-align: center;
 }
 
@@ -234,7 +238,8 @@ body {
 }
 
 .wrappes__completed {
-  display: grid;
+  display: none;
+  /* display: grid; */
   gap: $space-500;
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -246,6 +251,7 @@ body {
 
 .completed__subtitle {
   @include tgSize($textMobile-2, 600);
+  line-height: 1;
 }
 
 .completed__results {
@@ -254,7 +260,7 @@ body {
 }
 
 .results__result {
-  display: crid;
+  display: grid;
   justify-items: center;
   align-items: center;
   gap: 1rem;
@@ -268,15 +274,133 @@ body {
   line-height: 1.2;
 }
 
+.result__of {
+  @include tgSize($text-7, 400);
+  color: $blue-300-color;
+}
+
 .completed__button {
   @include tgSize($textMobile-4, 500);
   width: 100%;
   padding: 1rem;
   background-color: $purple-600-color;
-  border-radius: 1rem;
+  border-radius: $space-150;
 }
 
+@media (min-width: 45em) {
+  body {
+    background-image: url('../images/pattern-background-tablet-dark.svg');
+    background-repeat: no-repeat;
+    padding: $space-500 $space-800 0 $space-800;
+  }
+    
+  .layout__access {
+    /* margin: $space-500 $space-800; */
+    padding: 0;
+  }
 
+/* ####### START QUESTIONS ######## */
+
+  .questions__question {
+    gap: 1.313rem;//21px
+  }
+  .question__title {
+   font-size: $text-3;//36px
+    // @include tgSize($textMobile-3, 500);
+    // line-height: 1.2;
+    // margin-bottom: $space-300;
+  }
+  .question__subtitle {
+    font-size: $text-6;//20PX
+  }
+  .questions__answers {
+    gap: $space-300;//24px
+  }
+  .answers__item {
+    grid-template-columns: 3.5rem 1fr 2.5rem;
+    gap: $space-400;//32PX
+    border-radius: 1.25rem;
+  }
+  .item__radio {
+    width: $space-700; //56px
+    height: $space-700;
+    border-radius: $space-150;
+  }
+  .item__letter {
+    font-size: $text-4;
+  }
+  .item__text {
+    font-size: $text-4;
+  } 
+  .button__submit {
+    font-size: $space-350;
+    padding: $space-400;
+  }
+
+/* #### END QUESTIONS ####### */
+
+  .wrappes__completed {
+    padding: 0;
+}
+  .access__image {
+    @include bgColorIcon($space-700, $purple-100-color);
+  }
+  .item__images,
+  .access__img {
+    @include iconItem ($space-500);
+  }
+  .access__title {
+    font-size: $text-4;
+  }
+  .access__themes {
+    gap: $space-200; //16px
+  }
+
+  .themes__images {
+    width: $space-300; //14px 
+    height: $space-300; //14px 
+  }
+
+  .themes__options {
+    width: $space-600; //32px
+    height: $space-350; //20px
+  }
+  .theme__checkbox::before {
+    width: $space-275;
+    height: $space-275;
+    top: 4px;
+  }
+  .theme__option:checked + .theme__checkbox::before {
+      transform: translateX(21px);
+  }
+  
+  .completed__results {
+    width: 100%;
+    /* padding: $space-600; */
+    gap: $space-400;
+}
+  .completed__subtitle,
+  .completed__title {
+    font-size: $text-2;
+    line-height: 1.2;
+  }
+  .results__result {
+    gap: $space-500;
+}
+  .result__number {
+    font-size: $text-1;
+    line-height: 1.2;
+  }
+  .result__of {
+    @include tgSize($text-5, 400);
+    margin-top: 1rem;
+  }
+  .completed__button {
+    font-size: $space-350;
+    padding: $space-400; //32PX
+    border-radius: $space-300; //24PX
+}
+}
 
 
 
