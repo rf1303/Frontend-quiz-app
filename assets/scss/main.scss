@@ -25,7 +25,7 @@ body {
 }
 
 .access__icon {
-  /* opacity: 0; */
+  /* opacity: 0;  */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -94,10 +94,11 @@ body {
     transform: translateX(15px);
   }
 }
+/* ###### START ######  QUIZ MENU START  ############# */
 
-.wrappes__start {
-  display: none; 
-  /* display: grid;  */
+.wrappers__start {
+  display: none;
+  /* display: grid; */   
   justify-items: center;
   align-items: center;
   gap: $space-500;//40px 2.5rem
@@ -109,6 +110,10 @@ body {
   font-weight: 300;
   line-height: 1.2;
   margin-bottom: 1rem;
+}
+
+.start__title--bold {
+  font-weight: 500;
 }
 
 .title__bold {
@@ -134,33 +139,29 @@ body {
 }
 
 .quiz__item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  background-color: $blue-850-color;
-  border-radius: .75rem;
-  padding: 1rem; 
+  @include buttonItem;
+  justify-items: flex-start;
 }
 
 .item__images--html {
-  @include bgColorIcon($space-500, $orange-50-color);
+  background-color: $orange-50-color;
 }
 .item__images--css {
-  @include bgColorIcon($space-500, $green-100-color);
+  background-color: $green-100-color;
 }
 .item__images--js {
-  @include bgColorIcon($space-500, $blue-50-color);
+  background-color: $blue-50-color;
 }
 .item__images--access {
-  @include bgColorIcon($space-500, $purple-100-color);
+  background-color: $purple-100-color;
 }
+/* ###### END ######  QUIZ MENU START  ############# */
 
+/* ###### START ######  QUIZ QUESTIONS START  ############# */
 
 .wrappers__questions {
-  /* display: none;  */
-  display: grid;  
+  display: none;   
+  /* display: grid;  */
   gap: $space-500; //40px
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -236,10 +237,11 @@ body {
   text-align: center;
   text-transform: capitalize;
 }
+/* ###### END ######  QUIZ QUESTIONS START  ############# */
 
-.wrappes__completed {
-  display: none;
-  /* display: grid; */
+.wrappers__completed {
+  /* display: none; */
+  display: grid; 
   gap: $space-500;
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -296,22 +298,49 @@ body {
     
   .layout__access {
     /* margin: $space-500 $space-800; */
+    height: 3.5rem;
     padding: 0;
   }
+/* ########### QUIZ MENU START TABLET ########## */
+/* ########## LAYOUT--WRAPPERS ########### */
 
-/* ####### START QUESTIONS ######## */
+  .start__title {
+    font-size: $space-800; //64px
+  }
+  .start__subtitle {
+  font-size: $space-250;
+  }
+  .wrappers__start {
+  gap: $space-800;
+  padding-inline: 0;
+  }
+  .quiz__item {
+    grid-template-columns: $space-700 1fr;//56px
+    border-radius: $space-275;
+    font-size: $space-350;
+  }
+  .menu__list {
+    gap: $space-300; //24px
+  }
 
+
+/* ####### START QUESTIONS TABLET ######## */
+/* #######  WRAPPERS--QUESTIONS ######## */
+
+  .wrappers__questions {
+    padding-inline: 0;
+  }
   .questions__question {
-    gap: 1.313rem;//21px
+    gap: 1.5rem;//21px
   }
   .question__title {
    font-size: $text-3;//36px
-    // @include tgSize($textMobile-3, 500);
-    // line-height: 1.2;
-    // margin-bottom: $space-300;
+   line-height: 1.1;
+   margin-bottom: $space-200;
   }
   .question__subtitle {
     font-size: $text-6;//20PX
+    line-height: 1;
   }
   .questions__answers {
     gap: $space-300;//24px
@@ -335,12 +364,15 @@ body {
   .button__submit {
     font-size: $space-350;
     padding: $space-400;
+    margin-top: .5rem;
   }
 
-/* #### END QUESTIONS ####### */
+/* #### END ####### QUIZ QUESTIONS TABLET ###### */
 
-  .wrappes__completed {
+/* ### START ########## QUESTIONS COMPLETED TABLET ########### */ 
+  .wrappers__completed {
     padding: 0;
+    margin-top: $space-600;
 }
   .access__image {
     @include bgColorIcon($space-700, $purple-100-color);
@@ -399,10 +431,91 @@ body {
     font-size: $space-350;
     padding: $space-400; //32PX
     border-radius: $space-300; //24PX
-}
+  }
+/* ####### END ###### QUESTIONS COMPLETED TABLET ########### */ 
 }
 
+/* ### START ######## QUIZ MENU START DESKTOP ########## */
 
+@media (min-width: 87em) {
+  body {
+    background-image: url('../images/pattern-background-desktop-dark.svg');
+    align-items: center;
+    padding: 0;
+  } 
+  .layout__access {
+    max-width: 72.5rem;
+    margin-top: 5.188rem;
+  }
+  .layout__wrappers {
+    max-width: 72.5rem;
+  }
+  .wrappers__start {
+    max-width: 72.5rem;
+    grid-template-columns: 29.0063rem 35.25rem; //465px -- 564px
+    align-items: start; 
+    gap: $space-1600;
+    line-height: 1.2;
+    margin-top: $space-700;//72px
+  }
+  .access__image {
+    border-radius: .5rem;
+  }
+/* ### END ######## QUIZ MENU START DESKTOP ########## */
+
+/* ### START ####### QUIZ QUESTIONS DESKTOP ######## */
+
+  .wrappers__questions {
+    max-width: 72.5rem;
+    grid-template-columns: 29.0063rem 35.25rem; //465px -- 564px
+    align-items: start; 
+    gap: $space-1600;
+    line-height: 1.2;
+    margin-top: $space-700;//72px
+    transform: translateX(7%);
+    transition: all .4s ease;
+    &:hover {
+    transform: translateX(0%);
+    }
+    &:focus {
+    transform: translateX(0%);
+    }
+    &:active {
+    transform: translateX(0%);
+    }
+  }
+  .item__radio {
+    border-radius: .5rem;
+  }
+  .questions__answers {
+    gap: $space-200; //16px
+  }
+  .answers__item {
+    padding: $space-300;//24px
+  }
+  .question__title {
+    line-height: 1.3;
+  }
+  .question__bars {
+    margin-top: $space-2000;
+  }
+  .button__submit {
+    line-height: 1;
+  }
+/* ### END ####### QUIZ QUESTIONS DESKTOP ######## */
+  
+/* ### START ####### QUIZ COMPLETED DESKTOP ######## */
+
+  .wrappers__completed {
+    grid-template-columns: 28.126rem 35.25rem; //450px -- 564px
+    gap: 9rem;
+    margin-top: 5.313rem;
+  }
+
+  .completed__button {
+    line-height: 1;
+  }
+}
 
 
 
