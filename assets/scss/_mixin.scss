@@ -27,14 +27,15 @@
   margin-inline: auto;
 }
 
-@mixin buttonItem {
+@mixin buttonItem ($backgroundItem : $blue-850-color){
   display: grid;
   grid-template-columns: 2.5rem 1fr 2rem;
   // justify-content: flex-start;
   align-items: center;   
   gap: 1rem;
   width: 100%;
-  background-color: $blue-850-color;
+  background-color: $backgroundItem;
   border-radius: .75rem;
+  box-shadow: .7px .7px 8px 1px rgba(0, 0, 0, .1);
   padding: 1rem; 
 } 

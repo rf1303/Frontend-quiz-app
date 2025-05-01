@@ -2,14 +2,26 @@
 @use './variables' as *;
 @use './mixin' as *;
 @use './font-face' as *;
+@use  'sass:color';
+
 
 @include fontFace('rubik', '../fonts/Rubik-VariableFont_wght.ttf', 300 900);
 @include fontFace('rubikItalic', '../fonts/Rubik-Italic-VariableFont_wght.ttf', 300 900);
 
+:root {
+  --bg-body: #f4f6fa; //$blue-50-color: 
+  --bg-item: #fff; //#3b4d66; // $blue-850-color;
+  --bd-text: #313e51;//blue-900-color: 
+  --text-subtitle: #626c7f; //grey-500-color: 
+  --bg-button: #a729f5;//$purple-600-color: 
+  // --bg-body: $grey-50-color;
+  // --bg-item: $white-color;
+}
+
 body {
-  background-image: url('../images/pattern-background-mobile-dark.svg');
-  background-color: $blue-900-color;
-  color: $white-color;
+  background-image: url('../images/pattern-background-mobile-light.svg');
+  background-color:  var(--bg-body);   //$blue-900-color;
+  color: var(--bd-text);
   display: flex;
   flex-direction: column;
   font-family: rubik;
@@ -25,7 +37,7 @@ body {
 }
 
 .access__icon {
-  /* opacity: 0;  */
+  opacity: 0;  
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -54,6 +66,15 @@ body {
 .themes__images {
   width: $space-200; //14px 
   height: $space-200; //14px 
+}
+
+.themes__images--sun {
+  background-image: url('../images/icon-sun-dark.svg');
+  background-size: contain;
+}
+.themes__images--moon {
+  background-image: url('../images/icon-moon-dark.svg');
+  background-size: contain;
 }
 
 .themes__options {
@@ -97,8 +118,7 @@ body {
 /* ###### START ######  QUIZ MENU START  ############# */
 
 .wrappers__start {
-  display: none;
-  /* display: grid; */   
+  display: grid; 
   justify-items: center;
   align-items: center;
   gap: $space-500;//40px 2.5rem
@@ -122,6 +142,7 @@ body {
 
 .question__subtitle,
 .start__subtitle {
+  color: var(--text-subtitle);
   font-size: $text-7;//14px .875rem
   font-family: rubikItalic;
   font-weight: 300;
@@ -139,7 +160,7 @@ body {
 }
 
 .quiz__item {
-  @include buttonItem;
+  @include buttonItem(var(--bg-item));
   justify-items: flex-start;
 }
 
@@ -160,8 +181,7 @@ body {
 /* ###### START ######  QUIZ QUESTIONS START  ############# */
 
 .wrappers__questions {
-  /* display: none;    */
-  display: grid;  
+  display: grid;   
   gap: $space-500; //40px
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -182,7 +202,8 @@ body {
   height: 1rem;
   display: flex;
   align-items: center;
-  background-color: $blue-850-color;
+  background-color: var(--bg-item); // $blue-850-color;
+  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, .4) inset;
   border-radius: 3rem;
 }
 
@@ -193,6 +214,7 @@ body {
   align-content: center;
   margin-inline: .3rem;
   border-radius: 3rem;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, .5) inset;
 }
 
 .questions__answers {
@@ -201,8 +223,35 @@ body {
 }
 
 .answers__item {
-  @include buttonItem; 
-  outline: 3px solid red;
+  /* @include buttonItem;  */
+  @include buttonItem(var(--bg-item));
+}
+.answers__item--error {
+  outline: 3px solid $red-500-color;
+  .item__radio {
+    background-color: $red-500-color;
+  }
+  .item__letter {
+    color: $white-color;
+  }
+}
+.answers__item--good {
+  outline: 3px solid $green-500-color;
+  .item__radio {
+    background-color: $green-500-color;
+  }
+  .item__letter {
+    color: $white-color;
+  }
+}
+.answers__item--checked {
+  outline: 3px solid $purple-600-color;
+  .item__radio {
+    background-color: $purple-600-color;
+  }
+  .item__letter {
+    color: $white-color;
+  }
 }
 
 .answers__radio {
@@ -226,22 +275,41 @@ body {
 }
 
 .item__icon {
-  display: none;
+  display: none; 
+  width: $space-300;
+  height: $space-300;
+  background-image: url('../images/icon-error.svg');
+  background-size: contain;
 }
 
 .button__submit {
   @include buttonItem;
   @include tgSize($textMobile-4, 500);
   display: block;
-  background-color: $purple-600-color;
+  background-color: var(--bg-button); // $purple-600-color;
   text-align: center;
   text-transform: capitalize;
+  color: $white-color;
 }
+.answer__error {
+  @include tgSize($textMobile-4, 500);
+  display: flex;
+  gap: $space-100;
+  justify-content: center;
+  align-items: center;
+  color: $red-500-color;
+}
+
+.display__none {
+  display: none !important;
+}
+
 /* ###### END ######  QUIZ QUESTIONS START  ############# */
 
+/* ###### START ###   QUIZ  COMPLETED  ################# */
+
 .wrappers__completed {
-  display: none; 
-  /* display: grid;  */
+  display: grid; 
   gap: $space-500;
   padding: $space-400 $space-300 0 $space-300;
 }
@@ -267,7 +335,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: $space-400;
-  background-color: $blue-850-color;
+  background-color: var(--bg-item); // $blue-850-color;
   border-radius: 1rem;
 }
 
@@ -289,9 +357,13 @@ body {
   border-radius: $space-150;
 }
 
+/* ############### CLASS ERROR GOOD INLINE ########### */
+
+ 
+
 @media (min-width: 45em) {
   body {
-    background-image: url('../images/pattern-background-tablet-dark.svg');
+    background-image: url('../images/pattern-background-tablet-light.svg');
     background-repeat: no-repeat;
     padding: $space-500 $space-800 0 $space-800;
   }
@@ -366,6 +438,9 @@ body {
     padding: $space-400;
     margin-top: .5rem;
   }
+  .answer__error {
+    @include tgSize($space-300, 400);
+  }
 
 /* #### END ####### QUIZ QUESTIONS TABLET ###### */
 
@@ -439,7 +514,7 @@ body {
 
 @media (min-width: 87em) {
   body {
-    background-image: url('../images/pattern-background-desktop-dark.svg');
+    background-image: url('../images/pattern-background-desktop-light.svg');
     align-items: center;
     padding: 0;
   } 
@@ -518,6 +593,42 @@ body {
 }
 
 
+:root:has(#theme__option:checked) {
+  --bg-body: #313e51; //$blue-900-color;
+  --bg-item: #3b4d66; // $blue-850-color;
+  --bd-text: #fff; 
+  --text-subtitle: #abc1e1;//$blue-300-color: 
+  --bg-button: #a729f5;//$purple-600-color: 
+  body {
+    background-image: url('../images/pattern-background-mobile-dark.svg');
+  }
+  .themes__images--sun {
+    background-image: url('../images/icon-sun-light.svg');
+  }
+  .themes__images--moon {
+    background-image: url('../images/icon-moon-light.svg');
+  }
+  .answers__item--error .item__letter {
+    color: $blue-850-color;
+  }
+  .answers__item--good .item__letter {
+    color: $blue-850-color;
+  }
+  .answers__item--checked .item__letter {
+    color: $blue-850-color;
+  }
+  @media (min-width: 45em) {
+    body {
+      background-image: url('../images/pattern-background-tablet-dark.svg');
+      background-repeat: no-repeat;
+    }
+  }
+  @media (min-width: 87em) {
+    body {
+      background-image: url('../images/pattern-background-desktop-dark.svg');
+    }
+  }
+}
 
 
 

@@ -18,12 +18,12 @@
             <h2 class="access__title">Accessibility</h2>
         </section>
         <section class="access__themes"> 
-            <img class="themes__images" src="./assets/images/icon-sun-light.svg" alt="">
+            <div class="themes__images themes__images--sun"></div> 
             <label class="themes__options">
-                <input type="checkbox" name="themes" class="theme__option">
+                    <input type="checkbox" name="themes" class="theme__option" id="theme__option">
                 <span class="theme__checkbox"></span>
             </label>    
-            <img class="themes__images" src="./assets/images/icon-moon-light.svg" alt="">
+            <div class="themes__images themes__images--moon"></div> 
         </section>
     </header>
   <!-- Quiz menu start -->
@@ -69,7 +69,7 @@
   <!-- Quiz menu end -->
 
   <!-- Quiz question start -->
-        <section class="wrappers__questions"> 
+        <section class="wrappers__questions display__none"> 
             <section class="questions__question"> 
                 <p class="question__subtitle">Question <span class="subtitulo__number">6</span> of 10</p>
                 <h2 class="question__title">
@@ -87,7 +87,7 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                     <span class="item__text">4.5:1
                         <input type="radio" name="answer" class="answers__radio">
                     </span>
-                    <span class="item__icon"><img class="item__img" src="./assets/images/icon-correct.svg" alt=""> </span>
+                    <div class="item__icon"></div>
                 </label>       
                 <label for="answer-b" class="answers__item">
                     <div class="item__radio"> 
@@ -96,7 +96,7 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                     <span class="item__text">4.5:1
                         <input type="radio" name="answer" class="answers__radio">
                     </span>
-                    <span class="item__icon"><img class="item__img" src="./assets/images/icon-correct.svg" alt=""> </span>
+                    <div class="item__icon"></div>
                 </label>       
                 <label for="answer-c" class="answers__item">
                     <div class="item__radio"> 
@@ -105,7 +105,7 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                     <span class="item__text">4.5:1
                         <input type="radio" name="answer" class="answers__radio">
                     </span>
-                    <span class="item__icon"><img class="item__img" src="./assets/images/icon-correct.svg" alt=""> </span>
+                    <div class="item__icon"></div>
                 </label>       
                 <label for="answer-d" class="answers__item">
                     <div class="item__radio"> 
@@ -114,18 +114,18 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                     <span class="item__text">4.5:1
                         <input type="radio" name="answer" class="answers__radio">
                     </span>
-                    
-                    <span class="item__icon"><img class="item__img" src="./assets/images/icon-correct.svg" alt=""> </span>
+                    <div class="item__icon"></div>
                 </label>       
                 <section class="answers__button"> 
                     <button type="submit" class="button__submit">submit answer</button>
                 </section>
+            <span class="answer__error display__none"><img class="error__img" src="./assets/images/icon-error.svg" alt="">Please select an answer</span>    
             </form>
         </section>
   <!-- Quiz question end -->
 
   <!-- Quiz completed start -->
-        <section class="wrappers__completed"> 
+        <section class="wrappers__completed display__none"> 
             <section class="completed__header"> 
                 <h2 class="completed__title">Quiz completed</h2> 
                 <h3 class="completed__subtitle">You scored...</h3> 
