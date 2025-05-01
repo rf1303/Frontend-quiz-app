@@ -38,4 +38,22 @@
   border-radius: .75rem;
   box-shadow: .7px .7px 8px 1px rgba(0, 0, 0, .1);
   padding: 1rem; 
+  &:hover {
+    outline: 3px solid $purple-600-color;
+    .item__radio {
+      background-color: $purple-600-color;
+    }
+    .item__letter {
+      color: $white-color;
+    }
+  }
+  &:focus {
+    outline: 3px solid $purple-600-color;
+    .item__radio {
+      background-color: $purple-600-color;
+    }
+    .item__letter {
+      color: $white-color;
+    }
+  }
 } 

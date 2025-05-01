@@ -14,8 +14,6 @@
   --bd-text: #313e51;//blue-900-color: 
   --text-subtitle: #626c7f; //grey-500-color: 
   --bg-button: #a729f5;//$purple-600-color: 
-  // --bg-body: $grey-50-color;
-  // --bg-item: $white-color;
 }
 
 body {
@@ -82,6 +80,8 @@ body {
   display: inline-block;
   width: $space-400; //32px
   height: $space-275; //20px
+  border-radius: $space-300;
+  /* border: 3px solid $purple-700-color; */
 }
 
 .theme__checkbox {
@@ -111,6 +111,12 @@ body {
   opacity: 0;
   width: 0;
   height: 0;
+  &:hover {
+    outline: 2px solid $blue-500-color;
+  }
+  &:focus {
+    outline: 2px solid $purple-600-color;
+  }
   &:checked + .theme__checkbox::before {
     transform: translateX(15px);
   }
@@ -223,7 +229,6 @@ body {
 }
 
 .answers__item {
-  /* @include buttonItem;  */
   @include buttonItem(var(--bg-item));
 }
 .answers__item--error {
