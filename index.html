@@ -36,28 +36,28 @@
             <article class="start__menu"> 
                 <ul class="menu__list"> 
                     <li class="list__quiz"> 
-                        <button class="quiz__item" type="button">
+                        <button class="quiz__item" type="button" data-name="html">
                             <div class="access__image item__images--html"> 
                                 <img class="item__images" src="./assets/images/icon-html.svg" alt="">
                             </div>    
                         HTML</button>
                     </li>
                     <li class="list__quiz"> 
-                        <button class="quiz__item" type="button">
+                        <button class="quiz__item" type="button" data-name="css">
                             <div class="access__image item__images--css"> 
                                 <img class="item__images" src="./assets/images/icon-css.svg" alt="">
                             </div>    
                         CSS</button>
                     </li>
                     <li class="list__quiz"> 
-                        <button class="quiz__item" type="button">
+                        <button class="quiz__item" type="button" data-name="javascript">
                             <div class="access__image item__images--js"> 
                                 <img class="item__images" src="./assets/images/icon-js.svg" alt="">
                             </div>    
                         JavaScript</button>
                     </li>
                     <li class="list__quiz"> 
-                        <button class="quiz__item" type="button">
+                        <button class="quiz__item" type="button" data-name="access">
                             <div class="access__image item__images--access"> 
                                 <img class="item__images" src="./assets/images/icon-accessibility.svg" alt="">
                             </div>    
@@ -80,40 +80,36 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                 </div> 
             </section>
             <form class="questions__answers"> 
-                <label for="answer-a" class="answers__item">
+                <label for="answer-A" class="answers__item">
                     <div class="item__radio"> 
                         <span class="item__letter">a</span>
                     </div>
-                    <span class="item__text">4.5:1
-                        <input type="radio" name="answer" class="answers__radio">
-                    </span>
+                    <span class="item__text">4.5:1</span>
+                    <input type="radio" name="answer" class="answers__radio" id="answer-a" value="4.5:1">
                     <div class="item__icon"></div>
                 </label>       
                 <label for="answer-b" class="answers__item">
                     <div class="item__radio"> 
                         <span class="item__letter">b</span>
                     </div>
-                    <span class="item__text">4.5:1
-                        <input type="radio" name="answer" class="answers__radio">
-                    </span>
+                    <span class="item__text">4.5:1</span>
+                        <input type="radio" name="answer" class="answers__radio" id="answer-b" value="2.1:3">
                     <div class="item__icon"></div>
                 </label>       
                 <label for="answer-c" class="answers__item">
                     <div class="item__radio"> 
                         <span class="item__letter">c</span>
                     </div>
-                    <span class="item__text">4.5:1
-                        <input type="radio" name="answer" class="answers__radio">
-                    </span>
+                    <span class="item__text">4.5:1.0</span>
+                        <input type="radio" name="answer" class="answers__radio" id="answer-c" value="3.1">
                     <div class="item__icon"></div>
                 </label>       
                 <label for="answer-d" class="answers__item">
                     <div class="item__radio"> 
                         <span class="item__letter">d</span>
                     </div>
-                    <span class="item__text">4.5:1
-                        <input type="radio" name="answer" class="answers__radio">
-                    </span>
+                    <span class="item__text">4.7:1</span>
+                        <input type="radio" name="answer" class="answers__radio" id="answer-d" value="5.1:1">
                     <div class="item__icon"></div>
                 </label>       
                 <section class="answers__button"> 

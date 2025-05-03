@@ -95,6 +95,11 @@ body {
   gap: 1rem;
 }
 
+.access__icon--vissible {
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
 .access__title {
   font-size: 1.125rem;
   font-weight: 500;
@@ -142,7 +147,6 @@ body {
   width: 2rem;
   height: 1.25rem;
   border-radius: 1.5rem;
-  /* border: 3px solid $purple-700-color; */
 }
 
 .theme__checkbox {
@@ -305,13 +309,14 @@ body {
 }
 
 .bars__progress {
-  width: 60%;
+  width: 0%;
   height: 0.5rem;
   background-color: #a729f5;
   align-content: center;
   margin-inline: 0.3rem;
   border-radius: 3rem;
   box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.5) inset;
+  transition: width 0.7s ease-in;
 }
 
 .questions__answers {
@@ -380,8 +385,8 @@ body {
 }
 
 .answers__radio {
-  -webkit-appearance: none;
-  appearance: none;
+  /* appearance: none;  */
+  opacity: 0;
 }
 
 .item__radio {
