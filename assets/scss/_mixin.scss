@@ -57,3 +57,20 @@
     }
   }
 } 
+
+@mixin itemCheck ($colors) {
+  outline: 3px solid $colors !important;
+  .item__radio {
+      background-color: $colors !important;
+   }
+  .item__letter {
+    color: $white-color;
+  }
+}
+
+@mixin itemIcon {
+  width: $space-300;
+  height: $space-300;
+  background-image: url('../images/icon-correct.svg');
+  background-size: contain;
+}

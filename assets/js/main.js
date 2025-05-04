@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let menuListQuiz= "";
     let dataJson = {};
     let iq = 0;
+    let im = 0;
+    let quizCompleted = 0;
     const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
     const answerItem = questionsAnswers.querySelectorAll('.answers__item')[0];
     const menuList = document.querySelectorAll('.menu__list')[0];
@@ -43,15 +45,36 @@ document.addEventListener('DOMContentLoaded', function () {
     menuList.addEventListener('click', (e) => {
         e.preventDefault();
         menuListQuiz = e.target.dataset.name;
-        const indexAnswer = Array.from(menuList.children).indexOf(e.target.closest('li'));
-        console.log('li: ', indexAnswer);
+        im = Array.from(menuList.children).indexOf(e.target.closest('li'));
+        console.log('li: ', im);
         quizQuestion();
     })
     
-     questionsAnswers.addEventListener('click', (e) => { 
+     questionsAnswers.addEventListener('submit', (e) => { 
         e.preventDefault();
-        console.log('questionsAnswersClick', e.target.tagName);
-        console.log('questionsAnswersClick', e.target);
+        const answerError = document.querySelector('.answer__error');
+        const answerSelect = questionsAnswers.querySelector('.answers__radio:checked');
+        const answerLabel = answerSelect.closest("label");
+        const answerIcon = answerLabel.querySelector(".item__icon");
+
+        console.log('questionsAnswersiSelect', answerSelect.value);
+        if (!answerSelect) {
+            answerError.classList.remove('display__none');
+            return;
+        }
+        const  quizAnswer = dataJson.quizzes[im].questions[iq].answer;
+        console.log('dataJson.answer: ', dataJson.quizzes[im].questions[iq].answer);
+        if (answerSelect.value === quizAnswer) {
+            answerSelect.closest("label").classList.add('answers__item--good');
+            answerIcon.classList.add('item__icon--good');
+            quizCompleted++;
+            console.log('respuesta correcta:', answerSelect.closest("label"));
+        } else {
+            answerSelect.closest("label").classList.add('answers__item--error');
+            answerIcon.classList.add('item__icon--error');
+            console.log('La respuesta es incorrecta');
+        }
+
     });
 
     function quizQuestion() {
@@ -61,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('quiz data.json: ', dataJson.quizzes,' ', menuListQuiz);
         answerQuestion(dataJson, menuListQuiz);
     }
+
     function answerQuestion(dataJson, listQuiz) {
         const quizzes = dataJson.quizzes.find(quiz => quiz.title.toLowerCase() === listQuiz); 
         console.log('Las preguntas son: ',listQuiz,' ', quizzes);

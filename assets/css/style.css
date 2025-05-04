@@ -354,39 +354,48 @@ body {
   color: #ffffff;
 }
 
+.answers__radio {
+  display: none;
+}
+
+.answers__item:has(.answers__radio:checked) {
+  outline: 3px solid #a729f5 !important;
+}
+.answers__item:has(.answers__radio:checked) .item__radio {
+  background-color: #a729f5 !important;
+}
+.answers__item:has(.answers__radio:checked) .item__letter {
+  color: #ffffff;
+}
+
 .answers__item--error {
-  outline: 3px solid #ee5454;
+  outline: 3px solid #ee5454 !important;
 }
 .answers__item--error .item__radio {
-  background-color: #ee5454;
+  background-color: #ee5454 !important;
 }
 .answers__item--error .item__letter {
   color: #ffffff;
 }
 
 .answers__item--good {
-  outline: 3px solid #2fd887;
+  outline: 3px solid #2fd887 !important;
 }
 .answers__item--good .item__radio {
-  background-color: #2fd887;
+  background-color: #2fd887 !important;
 }
 .answers__item--good .item__letter {
   color: #ffffff;
 }
 
 .answers__item--checked {
-  outline: 3px solid #a729f5;
+  outline: 3px solid #a729f5 !important;
 }
 .answers__item--checked .item__radio {
-  background-color: #a729f5;
+  background-color: #a729f5 !important;
 }
 .answers__item--checked .item__letter {
   color: #ffffff;
-}
-
-.answers__radio {
-  /* appearance: none;  */
-  opacity: 0;
 }
 
 .item__radio {
@@ -412,11 +421,19 @@ body {
   text-transform: uppercase;
 }
 
-.item__icon {
-  display: none;
+.item__icon--error {
+  /* @include itemIcon('../images/icon-error.svg'); */
   width: 1.5rem;
   height: 1.5rem;
   background-image: url("../images/icon-error.svg");
+  background-size: contain;
+}
+
+.item__icon--good {
+  /* @include itemIcon('../images/icon-correct.svg'); */
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url("../images/icon-correct.svg");
   background-size: contain;
 }
 
