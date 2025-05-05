@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -77,6 +77,10 @@ body {
   display: flex;
   flex-direction: column;
   font-family: rubik;
+}
+
+.layout__wrappers {
+  overflow: hidden;
 }
 
 .layout__access {
@@ -384,10 +388,15 @@ body {
 }
 
 .answers__radio {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.answers__radio :focus {
+  background-color: transparent;
 }
 
-/* } */
 .answers__item--error:has(.answers__radio:checked) {
   outline: 3px solid #ee5454;
 }

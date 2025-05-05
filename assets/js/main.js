@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ###### ANSWERS ITEM LABEL ########### */
     const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
     const answerItem = questionsAnswers.querySelectorAll('.answers__item');
+    const answersRadioTab = document.querySelectorAll('.answers__radio'); 
 
     themeOption.click();//tema oscuro
 
@@ -54,6 +55,28 @@ document.addEventListener('DOMContentLoaded', function () {
         quizQuestion();
     });
 
+/* ############### teclado TAB ######################### */
+ const form = document.querySelector('.questions__answers');
+  const radios = form.querySelectorAll('.answers__radio');
+  const labels = form.querySelectorAll('.answers__item');
+
+  radios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      // Limpiar clases previas
+      labels.forEach(label => {
+        label.classList.remove('answers__item--checked');
+      });
+
+      // Agregar clase al label asociado
+      const selectedId = radio.id;
+      const selectedLabel = form.querySelector(`label[for="${selectedId}"]`);
+      if (selectedLabel) {
+        selectedLabel.classList.add('answers__item--checked');
+      }
+    });
+  });      
+/* ########## FIN TAB ############ */
+
 /* ########## INPUT RADIO CHECKED ########## */
     const radioChecked = document.querySelectorAll('.answers__radio');
 
@@ -67,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
         selectedLabel.classList.add('answers__item--checked');
       });
     });
-
 
 /* ######## FORM SUBMIT QUESTIONS ############### */
     
