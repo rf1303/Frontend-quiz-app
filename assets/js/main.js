@@ -2,19 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Inicio');
     let menuListQuiz= "";
     let dataJson = {};
+    let quizzes = {};
     let iq = 0;
     let im = 0;
-    let quizCompleted = 0;
-    const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
-    const answerItem = questionsAnswers.querySelectorAll('.answers__item')[0];
+    let qnc = 0;
     const menuList = document.querySelectorAll('.menu__list')[0];
     const themeOption = document.querySelector('.theme__option'); 
     const themesOptions = document.querySelector('.themes__options');
     const accessIcon = document.querySelector('.access__icon');    
+    const completedIcon = document.querySelector('.access__icon');    
     const wrappersStart = document.querySelector('.wrappers__start');    
     const wrappersQuestions = document.querySelector('.wrappers__questions');    
     const wrappersCompleted = document.querySelector('.wrappers__completed');    
-    const buttonSubmit = document.querySelector('.button__submit');
+
+/* ###### ANSWERS ITEM LABEL ########### */
+    const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
+    const answerItem = questionsAnswers.querySelectorAll('.answers__item');
 
     themeOption.click();//tema oscuro
 
@@ -31,9 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
      async function loadDatos() {
         try {
         const response = await fetch('data.json');
-     //        // if(!response.ok) {
-     //        //     throw new Error('No se pudo cargar el archivo');
-     //        // }
         dataJson = await response.json();
         console.log('await data: ', dataJson)       
 
@@ -42,13 +42,34 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error cargando data.json:", error);
         }
     }
+
+/* ########### MENU LIST NAME #################### */
+
     menuList.addEventListener('click', (e) => {
+        console.log('Menu  reinicio: ', iq, im, qnc);
         e.preventDefault();
         menuListQuiz = e.target.dataset.name;
         im = Array.from(menuList.children).indexOf(e.target.closest('li'));
         console.log('li: ', im);
         quizQuestion();
-    })
+    });
+
+/* ########## INPUT RADIO CHECKED ########## */
+    const radioChecked = document.querySelectorAll('.answers__radio');
+
+    radioChecked.forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.answers__item').forEach(label => {
+          label.classList.remove('answers__item--checked');
+        });
+
+        const selectedLabel = radio.closest('.answers__item');
+        selectedLabel.classList.add('answers__item--checked');
+      });
+    });
+
+
+/* ######## FORM SUBMIT QUESTIONS ############### */
     
      questionsAnswers.addEventListener('submit', (e) => { 
         e.preventDefault();
@@ -65,36 +86,83 @@ document.addEventListener('DOMContentLoaded', function () {
         const  quizAnswer = dataJson.quizzes[im].questions[iq].answer;
         console.log('dataJson.answer: ', dataJson.quizzes[im].questions[iq].answer);
         if (answerSelect.value === quizAnswer) {
-            answerSelect.closest("label").classList.add('answers__item--good');
+            answerLabel.classList.add('answers__item--good');
             answerIcon.classList.add('item__icon--good');
-            quizCompleted++;
+            qnc++; //suma a quiz Cempleted
             console.log('respuesta correcta:', answerSelect.closest("label"));
         } else {
-            answerSelect.closest("label").classList.add('answers__item--error');
+            answerLabel.classList.add('answers__item--error');
             answerIcon.classList.add('item__icon--error');
             console.log('La respuesta es incorrecta');
         }
+        const questionsLength = dataJson.quizzes[im].questions.length;
+        console.log('questionsLength: ', questionsLength);
+        setTimeout(() => {
+            iq++;
+            if (iq < questionsLength) {
+                quizAccess(quizzes, iq);              
+                cleanItem();
+                cleanChecked();
+            } else {
+              quizCompleted(qnc);  
+            }
+        }, 1500);
 
     });
 
+/* ######## MOSTRAR MENU DE PREGUNTOS ELEGIDAS ######### */
+
     function quizQuestion() {
+        const accessTitle = document.querySelector('.access__title');
+        const accessImage = document.querySelector('.access__image');
+        const accessImg = document.querySelector('.access__img');
+        const completedTitle = document.querySelector('.completed__title');
+        const completedImage = document.querySelector('.completed__image');
+        const completedImg = document.querySelector('.completed__img');
+        switch (menuListQuiz) {
+            case "html":
+                accessImage.classList.add('item__images--html');
+                completedImage.classList.add('item__images--html');
+                accessImg.src = `${dataJson.quizzes[im].icon}`;
+                completedImg.src = `${dataJson.quizzes[im].icon}`;
+                break;
+            case "css":
+                accessImage.classList.add('item__images--css');
+                accessImg.src = `${dataJson.quizzes[im].icon}`;
+                completedImage.classList.add('item__images--css');
+                completedImg.src = `${dataJson.quizzes[im].icon}`;
+                break;
+            case "javascript":
+                accessImage.classList.add('item__images--javascript');
+                accessImg.src = `${dataJson.quizzes[im].icon}`;
+                completedImage.classList.add('item__images--javascript');
+                completedImg.src = `${dataJson.quizzes[im].icon}`;
+                break;
+            case "accessibility":
+                accessImage.classList.add('item__images--access');
+                accessImg.src = `${dataJson.quizzes[im].icon}`;
+                completedImage.classList.add('item__images--access');
+                completedImg.src = `${dataJson.quizzes[im].icon}`;
+                break;
+            default:
+                break;
+        }
         wrappersStart.classList.add('display__none'); 
         wrappersQuestions.classList.remove('display__none'); 
         accessIcon.classList.add('access__icon--vissible');
-        console.log('quiz data.json: ', dataJson.quizzes,' ', menuListQuiz);
+        accessTitle.textContent = `${dataJson.quizzes[im].title}`;
+        completedTitle.textContent = `${dataJson.quizzes[im].title}`;
+        console.log('quiz data.json: ', dataJson.quizzes,' ', dataJson.quizzes[im].title);
         answerQuestion(dataJson, menuListQuiz);
     }
 
     function answerQuestion(dataJson, listQuiz) {
-        const quizzes = dataJson.quizzes.find(quiz => quiz.title.toLowerCase() === listQuiz); 
+        quizzes = dataJson.quizzes.find(quiz => quiz.title.toLowerCase() === listQuiz); 
         console.log('Las preguntas son: ',listQuiz,' ', quizzes);
         quizAccess(quizzes, iq);
     }
-
-});
     
     function quizAccess(quizzes, iq) {
-        /* while ( iq < 10) { */
             const questionsAnswers = document.querySelector('.questions__answers'); 
             const answerItem = questionsAnswers.querySelectorAll('.answers__item');
             const subtituloNumber = document.querySelector('.subtitulo__number'); 
@@ -112,11 +180,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 itemText.textContent = `${textOption}`;
                 answersRadio.value = `${textOption}`;
             });
-            // buttonSubmit.addEventListener('click',() => {
-            //     answerResult()  
-            // });          
-        /* } */
     }
+
+/* ##########  CLEAN INPUTS ############## */
+
+    function cleanItem() {
+        const answerIcon = document.querySelectorAll('.item__icon');
+        answerIcon.forEach(item => {
+            item.classList.remove('item__icon--good' , 'item__icon--error');
+        }) 
+        answerItem.forEach(element => {
+            element.classList.remove('answers__item--good', 'answers__item--error', 'answers__item--checked'); 
+        }); 
+    }
+
+/* ########## CLEAN CHECKED ############### */    
+
+    function cleanChecked() {
+        const cleanInput = document.querySelectorAll('.answers__radio');
+        cleanInput.forEach(item => {
+        item.checked = false;
+        });
+
+    }
+
+/* ############   QUIZ QUESTIONS COMPLETED ################## */
+
+    function quizCompleted(number) {
+        const resultNumber = document.querySelector('.result__number') 
+        wrappersQuestions.classList.add('display__none');
+        wrappersCompleted.classList.remove('display__none');
+        resultNumber.textContent = `${number}`; 
+        console.log('Completed: ', number); 
+    }
+    
+    const completedButton = document.querySelector('.completed__button');
+    completedButton.addEventListener('click', () => {
+        iq = 0;
+        im = 0;
+        qnc = 0;
+        wrappersCompleted.classList.add('display__none');
+        wrappersStart.classList.remove('display__none');
+        accessIcon.classList.remove('access__icon--vissible');
+        cleanItem();
+        console.log('completed reinicio: ', iq, im, qnc);
+    });
+
+});
 // Encotrar eh indice de una lista <ul> li 
 //const indexAnswer = Array.from(menuList.children).indexOf(e.target.closest('li'));
 

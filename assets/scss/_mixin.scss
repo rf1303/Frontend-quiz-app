@@ -30,7 +30,6 @@
 @mixin buttonItem ($backgroundItem : $blue-850-color){
   display: grid;
   grid-template-columns: 2.5rem 1fr 2rem;
-  // justify-content: flex-start;
   align-items: center;   
   gap: 1rem;
   width: 100%;
@@ -38,6 +37,11 @@
   border-radius: .75rem;
   box-shadow: .7px .7px 8px 1px rgba(0, 0, 0, .1);
   padding: 1rem; 
+  outline: none;
+  .item__radio {
+    @include bgColorIcon($space-500, $grey-50-color);
+    text-align: center;
+  }
   &:hover {
     outline: 3px solid $purple-600-color;
     .item__radio {
@@ -59,9 +63,9 @@
 } 
 
 @mixin itemCheck ($colors) {
-  outline: 3px solid $colors !important;
+  outline: 3px solid $colors;
   .item__radio {
-      background-color: $colors !important;
+      background-color: $colors;
    }
   .item__letter {
     color: $white-color;
