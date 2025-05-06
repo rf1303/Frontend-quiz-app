@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const themeOption = document.querySelector('.theme__option'); 
     const themesOptions = document.querySelector('.themes__options');
     const accessIcon = document.querySelector('.access__icon');    
-    const completedIcon = document.querySelector('.access__icon');    
     const wrappersStart = document.querySelector('.wrappers__start');    
     const wrappersQuestions = document.querySelector('.wrappers__questions');    
     const wrappersCompleted = document.querySelector('.wrappers__completed');    
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ###### ANSWERS ITEM LABEL ########### */
     const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
     const answerItem = questionsAnswers.querySelectorAll('.answers__item');
-    const answersRadioTab = document.querySelector('.answers__radio'); 
 
     themeOption.click();//tema oscuro
 

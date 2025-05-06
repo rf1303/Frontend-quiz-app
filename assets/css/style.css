@@ -116,7 +116,9 @@ body {
 .access__image {
   width: 2.5rem;
   height: 2.5rem;
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f6e7ff;
   border-radius: 0.3rem;
 }
@@ -256,7 +258,9 @@ body {
 .quiz__item .item__radio {
   width: 2.5rem;
   height: 2.5rem;
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f4f6fa;
   border-radius: 0.3rem;
   text-align: center;
@@ -359,7 +363,9 @@ body {
 .answers__item .item__radio {
   width: 2.5rem;
   height: 2.5rem;
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f4f6fa;
   border-radius: 0.3rem;
   text-align: center;
@@ -489,7 +495,9 @@ body {
 .button__submit .item__radio {
   width: 2.5rem;
   height: 2.5rem;
-  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #f4f6fa;
   border-radius: 0.3rem;
   text-align: center;
@@ -677,7 +685,9 @@ body {
   .access__image {
     width: 3.5rem;
     height: 3.5rem;
-    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f6e7ff;
     border-radius: 0.3rem;
   }
