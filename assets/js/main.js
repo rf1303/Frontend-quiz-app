@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const response = await fetch('data.json');
         dataJson = await response.json();
         console.log('await data: ', dataJson)       
-
+        return dataJson;
 
         } catch (error) {
         console.error("Error cargando data.json:", error);
@@ -54,21 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('li: ', im);
         quizQuestion();
     });
-
-/* ############### teclado TAB ######################### */
-
-// document.querySelectorAll('.answers__radio').forEach(radio => {
-//   radio.addEventListener('change', () => {
-//     document.querySelectorAll('.answers__item').forEach(label => {
-//       label.classList.remove('answers__item--checked');
-//     });
-//
-//     const selectedLabel = radio.closest('.answers__item');
-//     selectedLabel.classList.add('answers__item--checked');
-//   });
-// });
-//
-/* ########## FIN TAB ############ */
 
 /* ########## INPUT RADIO CHECKED ########## */
     const radioChecked = document.querySelectorAll('.answers__radio');
@@ -264,26 +249,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
-// Encotrar eh indice de una lista <ul> li 
-//const indexAnswer = Array.from(menuList.children).indexOf(e.target.closest('li'));
-
-  // const button = e.target.closest('button.quiz__item');
-  // if (!button) return;
-  // Encuentra el <li> que contiene el botón
-  // const li = button.closest('li');
-  //
-  // // Convierte la lista de hijos de <ul> a array para obtener el índice
-  // const index = Array.from(menuList.children).indexOf(li);
-  //
-  // console.log('Índice del <li> clickeado:', index);
-
-/* GUARDAR TEMA */
-    // const themeOptionStorage = function (theme) { //guardar tema
-    //     localStorage.setItem("optionTheme", theme)
-    // }
-    //
-    // themeOption.addEventListener('click', (e) => {
-    //     console.log("tema: ", e.target.value);
-    //     themeOptionStorage(e.target.value);
-    // });
 
