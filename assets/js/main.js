@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ###### ANSWERS ITEM LABEL ########### */
     const questionsAnswers = document.querySelectorAll('.questions__answers')[0];
     const answerItem = questionsAnswers.querySelectorAll('.answers__item');
-    const answersRadioTab = document.querySelectorAll('.answers__radio'); 
+    const answersRadioTab = document.querySelector('.answers__radio'); 
 
     themeOption.click();//tema oscuro
 
@@ -56,25 +56,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 /* ############### teclado TAB ######################### */
- const form = document.querySelector('.questions__answers');
-  const radios = form.querySelectorAll('.answers__radio');
-  const labels = form.querySelectorAll('.answers__item');
 
-  radios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      // Limpiar clases previas
-      labels.forEach(label => {
-        label.classList.remove('answers__item--checked');
-      });
-
-      // Agregar clase al label asociado
-      const selectedId = radio.id;
-      const selectedLabel = form.querySelector(`label[for="${selectedId}"]`);
-      if (selectedLabel) {
-        selectedLabel.classList.add('answers__item--checked');
-      }
-    });
-  });      
+// document.querySelectorAll('.answers__radio').forEach(radio => {
+//   radio.addEventListener('change', () => {
+//     document.querySelectorAll('.answers__item').forEach(label => {
+//       label.classList.remove('answers__item--checked');
+//     });
+//
+//     const selectedLabel = radio.closest('.answers__item');
+//     selectedLabel.classList.add('answers__item--checked');
+//   });
+// });
+//
 /* ########## FIN TAB ############ */
 
 /* ########## INPUT RADIO CHECKED ########## */
@@ -97,14 +90,19 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         const answerError = document.querySelector('.answer__error');
         const answerSelect = questionsAnswers.querySelector('.answers__radio:checked');
-        const answerLabel = answerSelect.closest("label");
-        const answerIcon = answerLabel.querySelector(".item__icon");
 
-        console.log('questionsAnswersiSelect', answerSelect.value);
         if (!answerSelect) {
             answerError.classList.remove('display__none');
+            setTimeout(() => {
+               answerError.classList.add('display__none');
+            }, 3000);
             return;
         }
+
+        const answerLabel = answerSelect.closest("label");
+        const answerIcon = answerLabel.querySelector(".item__icon");
+        console.log('questionsAnswersiSelect', answerSelect.value);
+
         const  quizAnswer = dataJson.quizzes[im].questions[iq].answer;
         console.log('dataJson.answer: ', dataJson.quizzes[im].questions[iq].answer);
         if (answerSelect.value === quizAnswer) {
@@ -247,6 +245,23 @@ document.addEventListener('DOMContentLoaded', function () {
         cleanItem();
         console.log('completed reinicio: ', iq, im, qnc);
     });
+
+/* ######### TECLADO CHECKED ############## */
+
+    answerItem.forEach( item => {
+        item.setAttribute('tabindex', '0');
+
+        item.addEventListener('keydown', (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                const ansRadio = item.querySelector('.answers__radio');
+                   ansRadio.checked = true; 
+                cleanItem();
+                item.classList.add('answers__item--checked');
+            }
+        })
+    });    
+
 
 });
 // Encotrar eh indice de una lista <ul> li 

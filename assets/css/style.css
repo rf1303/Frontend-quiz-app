@@ -79,10 +79,6 @@ body {
   font-family: rubik;
 }
 
-.layout__wrappers {
-  overflow: hidden;
-}
-
 .layout__access {
   width: 100%;
   height: 4.5rem;
@@ -110,7 +106,7 @@ body {
   transition: opacity 0.7s ease;
 }
 
-.completed__title,
+.results__title,
 .access__title {
   font-size: 1.125rem;
   font-weight: 500;
@@ -390,11 +386,8 @@ body {
 .answers__radio {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
-}
-.answers__radio :focus {
-  background-color: transparent;
+  width: 0px;
+  height: 0px;
 }
 
 .answers__item--error:has(.answers__radio:checked) {
@@ -532,7 +525,7 @@ body {
 }
 
 .display__none {
-  display: none;
+  display: none !important;
 }
 
 /* ###### END ######  QUIZ QUESTIONS START  ############# */
@@ -695,7 +688,7 @@ body {
     height: 2.5rem;
     margin-inline: auto;
   }
-  .completed__title,
+  .results__title,
   .access__title {
     font-size: 1.75rem;
   }
@@ -861,12 +854,14 @@ body {
   }
 }
 
+.answer__error,
 .wrappers__start,
 .wrappers__questions,
 .wrappers__completed {
   transition: opacity 0.9s ease;
   opacity: 0;
 }
+.answer__error:where(:not(.display__none)),
 .wrappers__start:where(:not(.display__none)),
 .wrappers__questions:where(:not(.display__none)),
 .wrappers__completed:where(:not(.display__none)) {
@@ -874,6 +869,7 @@ body {
   opacity: 1;
 }
 @starting-style {
+  .answer__error:where(:not(.display__none)),
   .wrappers__start:where(:not(.display__none)),
   .wrappers__questions:where(:not(.display__none)),
   .wrappers__completed:where(:not(.display__none)) {

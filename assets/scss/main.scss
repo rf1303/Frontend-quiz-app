@@ -25,9 +25,9 @@ body {
   font-family: rubik;
 }
 
-.layout__wrappers {
-  overflow: hidden;
-}
+// .layout__wrappers {
+//   overflow-y: hidden;
+// }
 
 .layout__access {
   width: 100%;
@@ -57,7 +57,7 @@ body {
   transition: opacity .7s ease;
 }
 
-.completed__title,
+.results__title,
 .access__title {
   font-size: 1.125rem;
   font-weight: 500;
@@ -256,11 +256,8 @@ body {
 .answers__radio {
   position: absolute;
   opacity: 0;
-  width: 0;
-  height: 0;
-  :focus {
-    background-color: transparent;
-  }
+  width: 0px;
+  height: 0px;
 }
 
 .answers__item--error:has(.answers__radio:checked) {
@@ -329,7 +326,7 @@ body {
 }
 
 .display__none {
-  display: none;
+  display: none !important;
 
 }
 
@@ -487,7 +484,7 @@ body {
   .access__img {
     @include iconItem ($space-500);
   }
-  .completed__title,
+  .results__title,
   .access__title {
     font-size: $text-4;
   }
@@ -583,13 +580,13 @@ body {
     transform: translateX(7%);
     transition: all .4s ease;
     &:hover {
-    transform: translateX(0%);
+      transform: translateX(0%);
     }
     &:focus {
-    transform: translateX(0%);
+      transform: translateX(0%);
     }
     &:active {
-    transform: translateX(0%);
+      transform: translateX(0%);
     }
   }
   .item__radio {
@@ -662,6 +659,7 @@ body {
     }
   }
 }
+.answer__error,
 .wrappers__start,
 .wrappers__questions,
 .wrappers__completed {
