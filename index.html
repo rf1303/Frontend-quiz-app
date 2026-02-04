@@ -11,28 +11,28 @@
 </head>
 <body>
     <header class="layout__access"> 
-        <section class="access__icon"> 
+        <div class="access__icon"> 
             <div class="access__image"> 
                 <img class="access__img" src="" alt="">  
             </div>    
-            <h2 class="access__title">Accessibility</h2>
-        </section>
-        <section class="access__themes"> 
+            <h1 class="access__title">Accessibility</h1>
+        </div>
+        <div class="access__themes"> 
             <div class="themes__images themes__images--sun"></div> 
             <label class="themes__options" tabindex="0" aria-label="Change Theme Dark light">
                     <input type="checkbox" name="themes" class="theme__option" id="theme__option">
                 <span class="theme__checkbox" aria-hidden="true"></span>
             </label>    
             <div class="themes__images themes__images--moon"></div> 
-        </section>
+        </div>
     </header>
   <!-- Quiz menu start -->
     <main class="layout__wrappers"> 
         <section class="wrappers__start"> 
-            <section class="start__left"> 
-                <h1 class="start__title">Welcome to the <span class="start__title--bold">Frontend Quiz!</span></h1> 
+            <div class="start__left"> 
+                <h2 class="start__title">Welcome to the <span class="start__title--bold">Frontend Quiz!</span></h2> 
                 <p class="start__subtitle">Pick a subject to get started.</p>
-            </section>
+            </div>
             <article class="start__menu"> 
                 <ul class="menu__list"> 
                     <li class="list__quiz"> 
@@ -70,15 +70,15 @@
 
   <!-- Quiz question start -->
         <section class="wrappers__questions display__none"> 
-            <section class="questions__question"> 
+            <div class="questions__question"> 
                 <p class="question__subtitle">Question <span class="subtitulo__number">6</span> of 10</p>
-                <h2 class="question__title">
+                <h3 class="question__title">
 Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?
-                </h2>
+                </h3>
                 <div class="question__bars">
                     <div class="bars__progress"></div>
                 </div> 
-            </section>
+            </div>
             <form class="questions__answers"> 
                 <label tabindex="0" class="answers__item">
                     <input type="radio" id="answer-a" name="answer" class="answers__radio" value="Colorful Style Sheets" />
@@ -113,9 +113,9 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
                     <span class="item__text" aria-hidden="true">4.7:1</span>
                     <div class="item__icon" aria-hidden="true"></div>
                 </label>       
-                <section class="answers__button"> 
+                <div class="answers__button"> 
                     <button type="submit" class="button__submit">submit answer</button>
-                </section>
+                </div>
             <span class="answer__error display__none"><img class="error__img" src="./assets/images/icon-error.svg" alt="">Please select an answer</span>    
             </form>
         </section>
@@ -123,26 +123,26 @@ Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requi
 
   <!-- Quiz completed start -->
         <section class="wrappers__completed display__none"> 
-            <section class="completed__header"> 
-                <h2 class="completed__title">Quiz completed</h2> 
-                <h3 class="completed__subtitle">You scored...</h3> 
-            </section> 
-            <section class="completed__results"> 
-                <section class="results__result"> 
-                    <section class="completed__icon"> 
+            <div class="completed__header"> 
+                <h4 class="completed__title">Quiz completed</h4> 
+                <h5 class="completed__subtitle">You scored...</h5> 
+            </div> 
+            <div class="completed__results"> 
+                <div class="results__result"> 
+                    <div class="completed__icon"> 
                         <div class="completed__image"> 
                             <img class="completed__img" src="" alt="">  
                         </div>    
-                        <h2 class="results__title">Accessibility</h2>
-                    </section>
-                    <section class="result__numbers"> 
+                        <h6 class="results__title">Accessibility</h6>
+                    </div>
+                    <div class="result__numbers"> 
                         <p class="result__number">8</p>
                         <p class="result__of">out of 10</p>
-                    </section>    
-                </section>
+                    </div>    
+                </div>
 
                 <button class="completed__button" type="button">Play again</button>
-            </section>    
+            </div>    
         </section>
     </main>
   <!-- Quiz completed end -->
